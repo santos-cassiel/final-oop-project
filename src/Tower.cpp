@@ -6,7 +6,7 @@ using namespace std;
 
 Tower::Tower(string name, int health) {
   this->name = name;
-  this->health = 300;
+  this->health = 300;  // default health is 300, can still change this
   this->destroyed = false;
 }
 
