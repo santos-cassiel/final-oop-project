@@ -8,7 +8,7 @@ class MultipleAtkCard : public AttackCard {
   int numTargets;
 
  public:
-  MultipleAtkCard(std::string name, int power, std::string atkType,
+  MultipleAtkCard(std::string name, int power, std::string attackType,
                   int numTargets);
 
   void applyAttack(Tower targets[], int count);
