@@ -14,7 +14,7 @@ class Tower {
   std::string getName() const;
   int getHealth() const;
 
-  void takeDamage(int dmg);
+  virtual void takeDamage(int dmg);
   void healTower(int HP);
   bool isDestroyed() const;
 };
