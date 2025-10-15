@@ -1,7 +1,7 @@
 #include "../include/AttackCard.h"
 
 AttackCard::AttackCard(std::string name, int power, std::string attackType)
-    : Card(name, power, "singleAtk") {
+    : Card(name, power, "attack") {
   this->attackType = attackType;
 }
 
