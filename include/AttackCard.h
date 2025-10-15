@@ -1,3 +1,6 @@
+#ifndef ATTACKCARD_H
+#define ATTACKCARD_H
+
 #include "../include/Card.h"
 
 class AttackCard : public Card {
@@ -10,3 +13,5 @@ class AttackCard : public Card {
   std::string getAttackType() const;
   void applyAttack(Tower& target) override;
 };
+
+#endif
