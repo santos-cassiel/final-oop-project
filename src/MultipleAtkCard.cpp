@@ -2,7 +2,7 @@
 
 MultipleAtkCard::MultipleAtkCard(std::string name, int power,
                                  std::string attackType, int numTargets)
-    : AttackCard(name, power, attackType) {
+    : AttackCard(name, power, "multipleAtk") {
   this->numTargets = numTargets;
 }
 
