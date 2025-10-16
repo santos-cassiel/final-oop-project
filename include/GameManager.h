@@ -26,7 +26,7 @@ class GameManager {
   void updateTimer();
   void endGame();
   void playerTurn(Player& current, Player& opponent);
-  void displayStatus() const;
+  void displayStatus();
 };
 
 #endif
