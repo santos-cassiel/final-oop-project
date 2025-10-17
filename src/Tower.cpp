@@ -4,6 +4,8 @@
 #include <string>
 using namespace std;
 
+Tower::Tower() : name(NULL), health(100), destroyed(false) {}
+
 Tower::Tower(string name, int health) {
   this->name = name;
   this->health = 100;  // default health is 100
