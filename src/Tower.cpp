@@ -36,6 +36,6 @@ bool Tower::isDestroyed() const {
   if (health < 0) {
     return true;
   } else {
-    false;
+    return false;
   }
 }
