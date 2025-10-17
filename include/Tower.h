@@ -10,6 +10,7 @@ class Tower {
   bool destroyed;
 
  public:
+  Tower();
   Tower(std::string name, int health);
   std::string getName() const;
   int getHealth() const;
