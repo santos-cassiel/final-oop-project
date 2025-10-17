@@ -12,12 +12,13 @@ class GameManager {
   Player player1;
   Player player2;
   Player* currentPlayer;
-  int timer;
   bool gameOver;
 
+  std::chrono::steady_clock::time_point startTime;
+  int timeLimit;
+
  public:
-  GameManager(const std::string& name1, const std::string& name2,
-              int gameTime = 180);
+  GameManager(const std::string& name1, const std::string& name2);
   void startGame();
 
  public:
