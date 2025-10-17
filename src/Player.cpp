@@ -2,7 +2,12 @@
 
 #include <iostream>
 
-Player::Player(std::string name) { this->name = name; }
+Player::Player(std::string name) {
+  this->name = name;
+  for (int i = 0; i < 3; i++) {
+    hand[i] = nullptr;
+  }
+}
 
 void Player::firstHandDraw() {
   for (int i = 0; i < 3; i++) {
