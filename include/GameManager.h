@@ -17,6 +17,8 @@ class GameManager {
   std::chrono::steady_clock::time_point startTime;
   int timeLimit;
 
+  void clearScreen();
+
  public:
   GameManager(const std::string& name1, const std::string& name2);
   void startGame();
