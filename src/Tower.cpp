@@ -35,7 +35,7 @@ void Tower::healTower(int HP) {
 }
 
 bool Tower::isDestroyed() const {
-  if (health < 0) {
+  if (health <= 0) {
     return true;
   } else {
     return false;
