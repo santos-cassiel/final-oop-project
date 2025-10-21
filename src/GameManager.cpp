@@ -1,6 +1,15 @@
 #include "../include/GameManager.h"
 using namespace std;
+#include <cstdlib>
 #include <limits>
+
+void GameManager::clearScreen() {
+#ifdef _WIN32
+  system("cls");
+#else
+  system("clear");
+#endif
+}
 
 GameManager::GameManager(const std::string& name1, const std::string& name2)
     : player1(name1),
@@ -18,6 +27,7 @@ void GameManager::startGame() {
   startTime = chrono::steady_clock::now();
 
   while (!gameOver) {
+    clearScreen();
     updateTimer();
     if (gameOver) break;
 
@@ -40,6 +50,8 @@ void GameManager::startGame() {
       switchTurn();
     }
   }
+
+  clearScreen();
 
   endGame();
 }
