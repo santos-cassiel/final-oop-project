@@ -74,7 +74,8 @@ void GameManager::playerTurn(Player& current, Player& opponent) {
   }
 
   int choice = 0;
-  Card* chosen;
+  Card* chosen = nullptr;
+
   while (true) {
     int tempChoice = 0;
     cout << "Choose card [1-3]: ";
@@ -84,9 +85,26 @@ void GameManager::playerTurn(Player& current, Player& opponent) {
 
       chosen = hand[choice - 1];
 
-      if (chosen) {
-        break;
+      string cardType = chosen->getType();
+
+      if (cardType == "healing") {
+        bool validTarget = false;
+        for (int i = 0; i < 3; i++) {
+          Tower& tower = current.getTowers()[i];
+          if (!tower.isDestroyed() && tower.getHealth() < 100) {
+            validTarget = true;
+            break;
+          }
+        }
+
+        if (!validTarget) {
+          cout << "No ally tower can be healed. Choose a different card"
+               << endl;
+          continue;
+        }
       }
+
+      break;
 
     } else {
       cout << "Invalid choice try again." << endl;
