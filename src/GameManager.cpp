@@ -82,6 +82,15 @@ void GameManager::playerTurn(Player& current, Player& opponent) {
     int tempChoice = 0;
     cout << "Choose card [1-3]: ";
     cin >> tempChoice;
+
+    if (cin.fail()) {
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Invalid input type. Please type a number between 1 and 3."
+           << endl;
+      continue;
+    }
+
     if (tempChoice >= 1 && tempChoice <= 3) {
       choice = tempChoice;
 
@@ -123,6 +132,14 @@ void GameManager::playerTurn(Player& current, Player& opponent) {
       cout << "Choose opponent tower to attack [1-3]: ";
       cin >> tempTarget;
 
+      if (cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input type. Please type a number between 1 and 3."
+             << endl;
+        continue;
+      }
+
       if (tempTarget >= 1 && tempTarget <= 3) {
         targetTower = tempTarget;
 
@@ -148,6 +165,14 @@ void GameManager::playerTurn(Player& current, Player& opponent) {
       int tempTarget = 0;
       cout << "Choose ally tower to heal [1-3]: ";
       cin >> tempTarget;
+
+      if (cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input type. Please type a number between 1 and 3."
+             << endl;
+        continue;
+      }
 
       if (tempTarget >= 1 && tempTarget <= 3) {
         targetTower = tempTarget;
