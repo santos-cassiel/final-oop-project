@@ -1,5 +1,6 @@
 #include "../include/GameManager.h"
 using namespace std;
+#include <limits>
 
 GameManager::GameManager(const std::string& name1, const std::string& name2)
     : player1(name1),
@@ -22,6 +23,9 @@ void GameManager::startGame() {
 
     displayStatus();
 
+    checkGameStatus();
+    if (gameOver) break;
+
     Player* opponent;
     if (currentPlayer == &player1) {
       opponent = &player2;
@@ -31,7 +35,10 @@ void GameManager::startGame() {
 
     playerTurn(*currentPlayer, *opponent);
     checkGameStatus();
-    switchTurn();
+
+    if (!gameOver) {
+      switchTurn();
+    }
   }
 
   endGame();
@@ -61,8 +68,6 @@ void GameManager::displayStatus() {
 }
 
 void GameManager::playerTurn(Player& current, Player& opponent) {
-  if (current.isDefeated()) return;
-
   cout << current.getName() << "'s turn: " << endl;
 
   Card** hand = current.getHand();
@@ -80,7 +85,7 @@ void GameManager::playerTurn(Player& current, Player& opponent) {
 
   while (true) {
     int tempChoice = 0;
-    cout << "Choose card [1-3]: ";
+    cout << endl << "Choose card [1-3]: ";
     cin >> tempChoice;
 
     if (cin.fail()) {
@@ -204,7 +209,12 @@ void GameManager::playerTurn(Player& current, Player& opponent) {
 }
 
 void GameManager::checkGameStatus() {
-  if (player1.isDefeated() || player2.isDefeated()) {
+  if (player1.isDefeated()) {
+    cout << endl << player1.getName() << " is defeated!" << endl;
+    gameOver = true;
+  }
+  if (player2.isDefeated()) {
+    cout << endl << player2.getName() << " is defeated!" << endl;
     gameOver = true;
   }
 }
