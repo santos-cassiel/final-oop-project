@@ -113,9 +113,7 @@ void GameManager::playerTurn(Player& current, Player& opponent) {
 
       chosen = hand[choice - 1];
 
-      string cardType = chosen->getType();
-
-      if (cardType == "healing") {
+      if (auto multi = dynamic_cast<HealCard*>(chosen)) {
         bool validTarget = false;
         for (int i = 0; i < 3; i++) {
           Tower& tower = current.getTowers()[i];
@@ -139,9 +137,14 @@ void GameManager::playerTurn(Player& current, Player& opponent) {
     }
   }
 
-  string cardType = chosen->getType();
+  if (auto multi = dynamic_cast<MultipleAtkCard*>(chosen)) {
+    cout << current.getName() << " used " << chosen->getName()
+         << " to all towers of " << opponent.getName() << endl;
 
-  if (cardType == "attack") {
+    Tower* targets = opponent.getTowers();
+    static_cast<MultipleAtkCard*>(chosen)->applyAttack(targets, 3);
+
+  } else if (auto multi = dynamic_cast<AttackCard*>(chosen)) {
     int targetTower = 0;
     Tower* target = nullptr;
     while (true) {
@@ -175,7 +178,7 @@ void GameManager::playerTurn(Player& current, Player& opponent) {
          << " to attack tower " << targetTower << " of " << opponent.getName()
          << endl;
     current.playCard(chosen, *target);
-  } else if (cardType == "healing") {
+  } else if (auto multi = dynamic_cast<HealCard*>(chosen)) {
     int targetTower = 0;
     Tower* target = nullptr;
     while (true) {
@@ -209,12 +212,6 @@ void GameManager::playerTurn(Player& current, Player& opponent) {
          << " to heal tower " << targetTower << " of " << current.getName()
          << endl;
     current.playCard(chosen, *target);
-  } else if (cardType == "multipleAtk") {
-    cout << current.getName() << " used " << chosen->getName()
-         << " to all towers of " << opponent.getName() << endl;
-
-    Tower* targets = opponent.getTowers();
-    static_cast<MultipleAtkCard*>(chosen)->applyAttack(targets, 3);
   } else {
     cout << "Unknown card type. Skipping turn." << endl;
   }

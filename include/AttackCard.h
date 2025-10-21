@@ -8,9 +8,8 @@ class AttackCard : public Card {
   std::string attackType;
 
  public:
-  AttackCard(std::string name, int power, std::string attackType);
+  AttackCard(std::string name, int power);
 
-  std::string getAttackType() const;
   void applyAttack(Tower& target) override;
 };
 

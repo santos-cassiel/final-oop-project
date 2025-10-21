@@ -1,8 +1,7 @@
 #include "../include/MultipleAtkCard.h"
 
-MultipleAtkCard::MultipleAtkCard(std::string name, int power,
-                                 std::string attackType, int numTargets)
-    : AttackCard(name, power, "multipleAtk") {
+MultipleAtkCard::MultipleAtkCard(std::string name, int power, int numTargets)
+    : AttackCard(name, power) {
   this->numTargets = numTargets;
 }
 
