@@ -62,7 +62,7 @@ void GameManager::displayStatus() {
   auto now = steady_clock::now();
   int elapsed = duration_cast<seconds>(now - startTime).count();
 
-  cout << endl << " Time elapsed: " << elapsed << " seconds" << endl;
+  cout << "Time elapsed: " << elapsed << " seconds" << endl;
 
   cout << player1.getName() << " Towers: " << endl;
   for (int i = 0; i < 3; i++) {
