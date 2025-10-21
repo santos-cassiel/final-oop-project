@@ -51,6 +51,8 @@ void GameManager::displayStatus() {
          << endl;
   }
   cout << endl;
+
+  cout << player2.getName() << " Towers: " << endl;
   for (int i = 0; i < 3; i++) {
     cout << " T" << i + 1 << ": " << player2.getTowers()[i].getHealth() << " HP"
          << endl;
